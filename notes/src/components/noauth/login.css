@@ -1,0 +1,104 @@
+body {
+
+    background-color: rgba(100, 100, 100, 1);
+   
+
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.labnote-title {
+    position: absolute;
+width: 690px;
+height: 500px;
+left: 85px;
+top: 110px;
+
+}
+
+p {
+    position: absolute;
+    width: 715px;
+    height: 94px;
+    left: 200px;
+    top: 650px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 57px;
+    color: #FFFFFF;
+}
+
+.btn-google {
+
+    background: #FFFFFF;
+    border-radius: 7px;
+    position: absolute;
+    position: absolute;
+    width: 506px;
+    height: 56px;
+    left: 165px;
+    top: 790px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: rgba(0, 0, 0, 0.49);
+    border: 2px solid rgba(73, 63, 63, 0.29);
+
+}
+
+.google-logo {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 180px;
+    top: 797px;
+    z-index: 2;
+}
+
+.developed {
+    position: absolute;
+    width: 455px;
+    height: 102px;
+    left: 340px;
+    top: 1225px;
+
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 32px;
+    z-index: 2;
+    color: #FFFFFF;
+}
+
+.c-logo {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 220px;
+    top: 1268px;
+}
+
+footer {
+    position: absolute;
+    width: 455px;
+    height: 102px;
+    left: 250px;
+    top: 1265px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 32px;
+    color: #FFFFFF;
+}

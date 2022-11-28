@@ -1,0 +1,71 @@
+body {
+    background-color: rgba(100, 100, 100, 1);
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.labnote-miniLogo {
+    position: absolute;
+    width: 234px;
+    height: 120px;
+    left: 270px;
+    top: 24px;
+    z-index: 2;
+}
+
+.user-icon {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    left: 25px;
+    top: 24px;
+}
+
+.go-out {
+    position: absolute;
+    left: 680px;
+    top: 15px;
+    z-index: 2;
+}
+
+.writenote-text {
+    position: absolute;
+    width: 498px;
+    height: 171px;
+    left: 135px;
+    top: 453px;
+}
+
+.spotlight-img {
+    position: absolute;
+    left: 340px;
+    top: 709px;
+}
+
+.footer {
+    position: absolute;
+    width: 1024px;
+    height: 136px;
+    left: 0px;
+    top: 1230px;
+    background: #6E7375;
+    mix-blend-mode: lighten;
+    z-index: 2;
+}
+
+.add-new-note {
+    position: absolute;
+    left: 360px;
+    top: 1251px;
+    z-index: 2;
+}
+
+.menu {
+    position: absolute;
+    left: 31px;
+    top: 1262px;
+    z-index: 2;
+}
