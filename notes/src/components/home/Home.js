@@ -1,8 +1,8 @@
-//import './home.css'
+import './home.css'
 
 export default function Home() { 
-    return <h1>Home</h1>
-   /* const homeImages = require.context('../../img', true)
+    //return <h1>Home</h1>
+   const homeImages = require.context('../../img', true)
     return (
         <div className='home'>
 
@@ -48,5 +48,5 @@ export default function Home() {
 
 
         </div>
-    )*/
+    )
 }

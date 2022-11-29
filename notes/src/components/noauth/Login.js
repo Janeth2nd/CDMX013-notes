@@ -1,6 +1,5 @@
 import './login.css'
 
-
 export default function Login() {
     const loginImages = require.context('../../img', true)
     const play = () =>{
