@@ -2,7 +2,7 @@ import { useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import { routerLogin } from "./components/noauth/routerLogin";
 import { routerHome } from "./components/home/routerHome";
-//const Text = () => (<p>hOLA!!</p>)
+
 function App() {
   const [user, setUser] = useState(null);
   return (
@@ -12,9 +12,10 @@ function App() {
     </div>
   );
 }
-//{<RouterProvider router= {routerHome } fallbackElement={<Text/>} />}
 
 export default App;
+
+
 
 
 //import Home from './components/home/Home';

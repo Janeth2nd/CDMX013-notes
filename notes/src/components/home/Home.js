@@ -34,7 +34,7 @@ export default function Home() {
                 className="spotlight-img"
             />
 
-            <footer className="footer"> </footer>
+            <footer className="containerFooter"> </footer>
             <img
                 src={homeImages(`./add-newNote.png`)}
                 alt={""}
