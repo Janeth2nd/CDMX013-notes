@@ -1,19 +1,23 @@
 import { useState } from "react";
-import { RouterProvider } from "react-router-dom";
-import { routerLogin } from "./components/noauth/routerLogin";
-import { routerHome } from "./components/home/routerHome";
-
+import { Route, Routes } from "react-router-dom";
+import Login from "./components/noauth/Login";
+import Home from "./components/home/Home";
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({"mail":"Ale"});
   return (
-    <div>
-      {user?<RouterProvider router={routerHome} />:<RouterProvider router={routerLogin} />}
+    <Routes>
+      { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
+
+      }
     
-    </div>
+    </Routes>
   );
 }
 
 export default App;
+
+
+
 
 
 
