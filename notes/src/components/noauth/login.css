@@ -1,22 +1,20 @@
 body {
-
     background-color: rgba(100, 100, 100, 1);
-   
 
 }
 
 .login {
     display: flex;
     flex-direction: column;
-   
+
 }
 
 .labnote-title {
     position: absolute;
-width: 690px;
-height: 500px;
-left: 85px;
-top: 110px;
+    width: 690px;
+    height: 500px;
+    left: 170px;
+    top: 110px;
 
 }
 
@@ -24,7 +22,7 @@ p {
     position: absolute;
     width: 715px;
     height: 94px;
-    left: 200px;
+    left: 290px;
     top: 650px;
     font-family: 'Sora';
     font-style: normal;
@@ -42,7 +40,7 @@ p {
     position: absolute;
     width: 506px;
     height: 56px;
-    left: 165px;
+    left: 270px;
     top: 790px;
     font-family: 'Roboto';
     font-style: normal;
@@ -60,7 +58,7 @@ p {
     position: absolute;
     width: 45px;
     height: 45px;
-    left: 180px;
+    left: 285px;
     top: 797px;
     z-index: 2;
 }
@@ -69,9 +67,8 @@ p {
     position: absolute;
     width: 455px;
     height: 102px;
-    left: 340px;
+    left: 450px;
     top: 1225px;
-
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
@@ -85,7 +82,7 @@ p {
     position: absolute;
     width: 25px;
     height: 25px;
-    left: 220px;
+    left: 320px;
     top: 1268px;
 }
 
@@ -93,7 +90,7 @@ footer {
     position: absolute;
     width: 455px;
     height: 102px;
-    left: 250px;
+    left: 350px;
     top: 1265px;
     font-family: 'Sora';
     font-style: normal;
@@ -102,3 +99,5 @@ footer {
     line-height: 32px;
     color: #FFFFFF;
 }
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {}

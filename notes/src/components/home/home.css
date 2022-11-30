@@ -11,7 +11,7 @@ body {
     position: absolute;
     width: 234px;
     height: 120px;
-    left: 270px;
+    left: 400px;
     top: 24px;
     z-index: 2;
 }
@@ -26,8 +26,8 @@ body {
 
 .go-out {
     position: absolute;
-    left: 680px;
-    top: 15px;
+    left: 920px;
+    top: 19px;
     z-index: 2;
 }
 
@@ -35,13 +35,13 @@ body {
     position: absolute;
     width: 498px;
     height: 171px;
-    left: 135px;
+    left: 260px;
     top: 453px;
 }
 
 .spotlight-img {
     position: absolute;
-    left: 340px;
+    left: 470px;
     top: 709px;
 }
 
@@ -58,7 +58,7 @@ body {
 
 .add-new-note {
     position: absolute;
-    left: 360px;
+    left: 480px;
     top: 1251px;
     z-index: 2;
 }
@@ -69,3 +69,4 @@ body {
     top: 1262px;
     z-index: 2;
 }
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {}

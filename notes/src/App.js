@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/noauth/Login";
 import Home from "./components/home/Home";
 function App() {
-  const [user, setUser] = useState({"mail":"Ale"});
+  const [user, setUser] = useState({"email":"Jan"});
   return (
     <Routes>
       { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
