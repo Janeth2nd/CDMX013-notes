@@ -1,8 +1,10 @@
+import { googleAuth } from '../google';
 import './login.css'
 
 export default function Login() {
     const loginImages = require.context('../../img', true)
     const play = () =>{
+        googleAuth()
         console.log("it works");
     }
     return (
@@ -22,7 +24,7 @@ export default function Login() {
 
             <p>Use your google account</p>
 
-            <btn className="btn-google" onClick={()=>{play()}}>Sign in with Google</btn>
+            <button className="btn-google" onClick={()=>{play()}}>Sign in with Google</button>
 
             <div className="developed">Developed By</div>
             <footer className="footer">2022 Janeth Segundo | Laboratoria</footer>

@@ -1,20 +1,38 @@
 import { useState } from "react";
-import { RouterProvider } from "react-router-dom";
-import { routerLogin } from "./components/noauth/routerLogin";
-import { routerHome } from "./components/home/routerHome";
-//const Text = () => (<p>hOLA!!</p>)
-function App() {
+import { Route, Routes } from "react-router-dom";
+import React, { useEffect }from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import db from "./firebase/config";
+import Login from "./components/noauth/Login";
+import Home from "./components/home/Home";
+
+
+function App () {
+  useEffect(() => {
+    const getData = async() => {
+    const data = await getDocs(collection(db,"users"));
+    console.log(data);
+  }
+  getData();
+  }, []);
+
   const [user, setUser] = useState(null);
   return (
-    <div>
-      {user?<RouterProvider router={routerHome} />:<RouterProvider router={routerLogin} />}
+    <Routes>
+      { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
+
+      }
     
-    </div>
+    </Routes>
   );
 }
-//{<RouterProvider router= {routerHome } fallbackElement={<Text/>} />}
 
 export default App;
+
+
+
+
+
 
 
 //import Home from './components/home/Home';
