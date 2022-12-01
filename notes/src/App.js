@@ -10,7 +10,7 @@ import Home from "./components/home/Home";
 function App () {
   useEffect(() => {
     const getData = async() => {
-    const data = await getDocs(collection(db,"users"));
+    const data = await getDocs(collection(db,"Users"));
     console.log(data);
   }
   getData();
