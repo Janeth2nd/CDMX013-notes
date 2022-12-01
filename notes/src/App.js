@@ -1,9 +1,22 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import React, { useEffect }from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import db from "./firebase/config";
 import Login from "./components/noauth/Login";
 import Home from "./components/home/Home";
-function App() {
-  const [user, setUser] = useState({"email":"Jan"});
+
+
+function App () {
+  useEffect(() => {
+    const getData = async() => {
+    const data = await getDocs(collection(db,"users"));
+    console.log(data);
+  }
+  getData();
+  }, []);
+
+  const [user, setUser] = useState(null);
   return (
     <Routes>
       { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
