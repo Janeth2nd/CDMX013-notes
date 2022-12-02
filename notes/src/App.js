@@ -1,12 +1,32 @@
+import {Routes, Route} from "react-router-dom";
 import { useState } from "react";
+import "./App.css";
+import About from "./views/about";
+import Feed from "./views/Feed";
+import NotFound from "./views/NotFound";
+
+
+function App() {
+  return (
+<Routes>
+<Route path="/" element= {<Feed/>}/>
+<Route path="/about" element={<About/>}/>
+<Route path="*" element={<NotFound/>}/>
+</Routes>
+
+  );  
+}
+
+export default App;
+/*import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import React, { useEffect }from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import db from "./firebase/config";
 import Login from "./components/noauth/Login";
-import Home from "./components/home/Home";
+import Home from "./components/home/Home";*/
 
-
+/*
 function App () {
   useEffect(() => {
     const getData = async() => {
@@ -27,7 +47,7 @@ function App () {
   );
 }
 
-export default App;
+export default App;*/
 
 
 
