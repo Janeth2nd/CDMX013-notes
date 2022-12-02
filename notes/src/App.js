@@ -1,16 +1,55 @@
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import React, { useEffect } from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import db from "./firebase/config";
+import "./App.css";
+import About from "./views/about";
+//import Feed from "./views/Feed";
+import NotFound from "./views/NotFound";
+import Login from "./views/Login";
+import Home from "./views/Home";
+
+
+function App() {
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getDocs(collection(db, "users"));
+      console.log(data);
+    }
+    getData();
+  }, []);
+
+  const [user, setUser] = useState(null);
+
+  return (
+    <Routes>
+      <Route path="/" element={user ? <Home /> : <Login setUser={setUser} />} />
+      <Route path="/about" element={<About />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+
+  );
+}
+
+export default App;
+//<Route path="/" element={user ? <Home/> : <Login setUser={setUser}/>}/>
+//<Route path="/" element= {<Feed/>}/>
+
+/*import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import React, { useEffect }from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import db from "./firebase/config";
 import Login from "./components/noauth/Login";
-import Home from "./components/home/Home";
+import Home from "./components/home/Home";*/
 
-
+/*
 function App () {
   useEffect(() => {
     const getData = async() => {
-    const data = await getDocs(collection(db,"users"));
+    const data = await getDocs(collection(db,"Users"));
     console.log(data);
   }
   getData();
@@ -22,12 +61,12 @@ function App () {
       { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
 
       }
-    
+
     </Routes>
   );
 }
 
-export default App;
+export default App;*/
 
 
 

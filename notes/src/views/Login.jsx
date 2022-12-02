@@ -1,12 +1,20 @@
-import { googleAuth } from '../google';
+import { googleAuth } from "../componentes/google";
 import './login.css'
 
-export default function Login() {
-    const loginImages = require.context('../../img', true)
-    const play = () =>{
-        googleAuth()
-        console.log("it works");
-    }
+const loginImages = require.context('./../img', true)
+export default function Login(props) {
+    const { setUser } = props;
+    console.log(props);
+
+    const handleClick = () => {
+        const userPromise = googleAuth();
+        userPromise.then((user) => {
+            setUser(user)
+        }).catch((error) => {
+            console.log(error);
+        })
+    };
+
     return (
         <div className='login'>
 
@@ -24,7 +32,7 @@ export default function Login() {
 
             <p>Use your google account</p>
 
-            <button className="btn-google" onClick={()=>{play()}}>Sign in with Google</button>
+            <button type="button" className="btn-google" onClick={() => { handleClick() }}>Sign in with Google</button>
 
             <div className="developed">Developed By</div>
             <footer className="footer">2022 Janeth Segundo | Laboratoria</footer>

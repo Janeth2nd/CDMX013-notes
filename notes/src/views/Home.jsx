@@ -2,7 +2,7 @@ import './home.css'
 
 export default function Home() { 
     //return <h1>Home</h1>
-   const homeImages = require.context('../../img', true)
+   const homeImages = require.context('../img', true)
     return (
         <div className='home'>
 
