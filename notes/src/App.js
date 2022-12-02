@@ -1,5 +1,8 @@
 import {Routes, Route} from "react-router-dom";
 import { useState } from "react";
+import React, { useEffect }from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import db from "./firebase/config";
 import "./App.css";
 import About from "./views/about";
 import Feed from "./views/Feed";
@@ -7,6 +10,17 @@ import NotFound from "./views/NotFound";
 
 
 function App() {
+
+  useEffect(() => {
+    const getData = async() => {
+    const data = await getDocs(collection(db,"users"));
+    console.log(data);
+  }
+  getData();
+  }, []);
+
+  const [user, setUser] = useState(null);
+
   return (
 <Routes>
 <Route path="/" element= {<Feed/>}/>
