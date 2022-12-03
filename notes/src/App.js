@@ -26,7 +26,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={user ? <Home /> : <Login setUser={setUser} />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/" element={user ? <Home /> : <Login setUser={setUser} />} />
+      <Route path="/Home" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 
@@ -34,8 +35,10 @@ function App() {
 }
 
 export default App;
+
 //<Route path="/" element={user ? <Home/> : <Login setUser={setUser}/>}/>
 //<Route path="/" element= {<Feed/>}/>
+//<Route path="/Home" element={<Login />} />
 
 /*import { useState } from "react";
 import { Route, Routes } from "react-router-dom";

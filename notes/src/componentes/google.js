@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 //import onNavigate from 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
@@ -27,3 +27,5 @@ return promiseFirebase.then((result) => {
   });
       
 };
+
+export const signOutUser =() => signOut (auth)
