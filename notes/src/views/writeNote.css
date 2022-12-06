@@ -1,0 +1,55 @@
+body {
+    background-color: rgba(100, 100, 100, 1);
+}
+.flex-box {
+    display: flex;
+    flex-direction: column;
+}
+.labnote-miniLogo {
+    position: absolute;
+    width: 234px;
+    height: 120px;
+    left: 400px;
+    top: 24px;
+    z-index: 2;
+}
+.go-out {
+    position: absolute;
+    width: 67px;
+    height: 63px;
+    left: 920px;
+    top: 19px;
+    z-index: 4;
+    border-color: transparent;
+    background: url(../img/out.png);
+}
+.saveNote{
+position: absolute;
+left: 482px;
+top: 844px;
+z-index: 2;
+background: url(../img/writeNew-note.png);
+}
+
+.containerFooter {
+    position: absolute;
+    width: 1024px;
+    height: 136px;
+    left: 0px;
+    top: 1230px;
+    background: #6E7375;
+    mix-blend-mode: lighten;
+    z-index: 2;
+}
+.menu {
+    position: absolute;
+    left: 31px;
+    top: 1262px;
+    z-index: 2;
+}
+.back-to {
+position: absolute;
+left: 905px;
+top: 1260px;
+}
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {}

@@ -1,14 +1,18 @@
 import { signOutUser } from '../componentes/google';
+import {  useNavigate } from "react-router-dom";
 import './home.css'
 
 
 export default function Home(props) { 
+    const navigate = useNavigate();
     const getOut=props.logOut
     //return <h1>Home</h1>
    const homeImages = require.context('../img', true)
+   
    const handleSignOut= async()=> {
     await signOutUser();
     getOut();
+    navigate("/");
    console.log("go away!");
   }
     return (

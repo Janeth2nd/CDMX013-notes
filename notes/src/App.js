@@ -29,14 +29,16 @@ function setUserNull () {
   return (
     
     <Routes>
-      <Route path="/" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
-      <Route path="/Home" element={<Login />} />
+      <Route path="/" element={<Login setUser={setUser} />} />
+      <Route path="/Home" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 
   );
 
 }
+//<Route path="/Home" element={<Home logOut = {setUserNull} />} />
+// <Route path="/" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
 
 export default App;
 
