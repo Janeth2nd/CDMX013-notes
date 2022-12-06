@@ -1,15 +1,16 @@
 import { signOutUser } from '../componentes/google';
-//import { logout } from './LogOut';
-
 import './home.css'
 
-export default function Home() { 
+
+export default function Home(props) { 
+    const getOut=props.logOut
     //return <h1>Home</h1>
    const homeImages = require.context('../img', true)
-   const handleSignOut=()=> {
-    signOutUser()
-    console.log("go away!");
-   }
+   const handleSignOut= async()=> {
+    await signOutUser();
+    getOut();
+   console.log("go away!");
+  }
     return (
         <div className='home'>
 

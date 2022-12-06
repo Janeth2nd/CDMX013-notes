@@ -31,8 +31,9 @@ body {
     left: 920px;
     top: 19px;
     z-index: 4;
-    background-color: transparent;
+    border-color: transparent;
     background: url(../img/out.png);
+   
 }
 
 .writenote-text {
