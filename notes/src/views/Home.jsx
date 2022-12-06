@@ -1,8 +1,16 @@
+import { signOutUser } from '../componentes/google';
 import './home.css'
 
-export default function Home() { 
+
+export default function Home(props) { 
+    const getOut=props.logOut
     //return <h1>Home</h1>
    const homeImages = require.context('../img', true)
+   const handleSignOut= async()=> {
+    await signOutUser();
+    getOut();
+   console.log("go away!");
+  }
     return (
         <div className='home'>
 
@@ -18,11 +26,9 @@ export default function Home() {
                 className="user-icon"
             />
 
-            <img
-                src={homeImages(`./out.png`)}
-                alt={""}
-                className="go-out"
-            />
+            <button className="go-out" type="button" onClick={() => { handleSignOut() }}> </button>
+
+            
             <img
                 src={homeImages(`./writeNew-note.png`)}
                 alt={""}
@@ -45,7 +51,7 @@ export default function Home() {
                 alt={""}
                 className="menu"
             />
-
+        
 
         </div>
     )

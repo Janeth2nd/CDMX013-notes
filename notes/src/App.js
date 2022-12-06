@@ -4,12 +4,11 @@ import React, { useEffect } from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import db from "./firebase/config";
 import "./App.css";
-import About from "./views/about";
+//import About from "./views/about";
 //import Feed from "./views/Feed";
 import NotFound from "./views/NotFound";
 import Login from "./views/Login";
 import Home from "./views/Home";
-
 
 function App() {
 
@@ -21,21 +20,29 @@ function App() {
     getData();
   }, []);
 
-  const [user, setUser] = useState(null);
 
+   
+  const [user, setUser] = useState(null);
+function setUserNull () {
+  setUser(null)
+}
   return (
+    
     <Routes>
-      <Route path="/" element={user ? <Home /> : <Login setUser={setUser} />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
+      <Route path="/Home" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 
   );
+
 }
 
 export default App;
+
 //<Route path="/" element={user ? <Home/> : <Login setUser={setUser}/>}/>
 //<Route path="/" element= {<Feed/>}/>
+//<Route path="/Home" element={<Login />} />
 
 /*import { useState } from "react";
 import { Route, Routes } from "react-router-dom";

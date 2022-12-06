@@ -26,9 +26,14 @@ body {
 
 .go-out {
     position: absolute;
+    width: 67px;
+    height: 63px;
     left: 920px;
     top: 19px;
-    z-index: 2;
+    z-index: 4;
+    border-color: transparent;
+    background: url(../img/out.png);
+   
 }
 
 .writenote-text {
@@ -69,4 +74,5 @@ body {
     top: 1262px;
     z-index: 2;
 }
+
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {}
