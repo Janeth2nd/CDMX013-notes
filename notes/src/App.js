@@ -9,6 +9,7 @@ import "./App.css";
 import NotFound from "./views/NotFound";
 import Login from "./views/Login";
 import Home from "./views/Home";
+import WriteNote from "./views/WriteNote";
 
 function App() {
 
@@ -23,14 +24,16 @@ function App() {
 
    
   const [user, setUser] = useState(null);
-function setUserNull () {
+  function setUserNull () {
   setUser(null)
 }
   return (
     
     <Routes>
       <Route path="/" element={<Login setUser={setUser} />} />
-      <Route path="/Home" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
+      <Route path="/home" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
+      <Route path="/writeNote" element={user ? <WriteNote logOut = {setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/Home" element={<Home setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 

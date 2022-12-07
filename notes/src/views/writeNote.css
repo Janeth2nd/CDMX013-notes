@@ -1,10 +1,12 @@
 body {
     background-color: rgba(100, 100, 100, 1);
 }
+
 .flex-box {
     display: flex;
     flex-direction: column;
 }
+
 .labnote-miniLogo {
     position: absolute;
     width: 234px;
@@ -13,6 +15,7 @@ body {
     top: 24px;
     z-index: 2;
 }
+
 .go-out {
     position: absolute;
     width: 67px;
@@ -23,12 +26,55 @@ body {
     border-color: transparent;
     background: url(../img/out.png);
 }
-.saveNote{
-position: absolute;
-left: 482px;
-top: 844px;
-z-index: 2;
-background: url(../img/writeNew-note.png);
+
+.note-title {
+    position: absolute;
+    width: 840px;
+    height: 50px;
+    left: 80px;
+    top: 300px;
+    background: rgba(217, 217, 217, 0.66);
+    font-family: 'Sora';
+    padding: 1%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 69px;
+    z-index: 2;
+    color: rgba(0, 0, 0, 0.78);
+    border-color: transparent;
+}
+.note-content{
+    position: absolute;
+    width: 840px;
+    height: 550px;
+    left: 80px;
+    top: 380px;
+    background: rgba(217, 217, 217, 0.66);
+    font-family: 'Sora';
+    padding: 1%;
+    font-style: normal;
+    text-align:left;
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 69px;
+    color: rgba(0, 0, 0, 0.78);
+    border-color: transparent;
+    z-index:-2;
+    
+ 
+}
+
+.saveNote {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    left: 482px;
+    top: 850px;
+    z-index: 2;
+    background-image: url(../img/saveNote.png);
+    border-style: none;
+    background-color: transparent;
 }
 
 .containerFooter {
@@ -41,15 +87,24 @@ background: url(../img/writeNew-note.png);
     mix-blend-mode: lighten;
     z-index: 2;
 }
+
 .menu {
     position: absolute;
     left: 31px;
     top: 1262px;
     z-index: 2;
 }
-.back-to {
-position: absolute;
-left: 905px;
-top: 1260px;
+
+.go-backto-home {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    left: 905px;
+    top: 1260px;
+    z-index: 2;
+    border-style: none;
+    background-image: url(../img/go-back.png);
+    background-color: transparent;
 }
+
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {}

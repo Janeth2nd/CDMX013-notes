@@ -1,10 +1,25 @@
-//import { Home } from'./Home'
+import {  useNavigate } from "react-router-dom";
+import { signOutUser } from '../componentes/google';
 import './writeNote.css'
 
 const homeImages = require.context('../img', true)
 
 export default function WriteNote(props) {
+    const navigate = useNavigate();
+    const getOut=props.logOut
     console.log(props);
+
+    const signOutFromWriteNote= async()=> {
+        await signOutUser();
+        getOut();
+        navigate("/");
+       console.log("go away!");
+      }
+
+      const handleBacktoHome= async()=> {
+        await navigate();
+        navigate("/Home");
+      }
 
     return (
         <div className='writeNote'>
@@ -15,25 +30,27 @@ export default function WriteNote(props) {
                 className="labnote-miniLogo"
             />
 
-             <button className="go-out" type="button"> </button>
-             
+            <button className="go-out" type="button" onClick={() => { signOutFromWriteNote() }}> </button>
 
-             <button className="saveNote" type="button"> </button>
+            <form>
 
-             <footer className="containerFooter"> </footer>
+                <input className="note-title" type="text" name="Title" value="Title:" />
+                <input className="note-content" type="text" name="Content" value="Content:" />
+                <button className="saveNote" type="button"> </button>
 
-             <img
+            </form>
+
+            <button className="saveNote" type="button"> </button>
+
+            <footer className="containerFooter"> </footer>
+
+            <img
                 src={homeImages(`./menu.png`)}
                 alt={""}
                 className="menu"
             />
-             <img
-                src={homeImages(`./backto.png`)}
-                alt={""}
-                className="back-to"
-            />
-
-
+            <button className="go-backto-home" type="button" onClick={() => { handleBacktoHome() }}> </button>
+            {/* <button className="go-out" type="button" onClick={() => { signOutFromWriteNote() }}> </button> */}
 
         </div>
 
