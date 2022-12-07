@@ -1,19 +1,24 @@
 import { googleAuth } from "../componentes/google";
+import {  useNavigate } from "react-router-dom";
 import './login.css'
 
 const loginImages = require.context('./../img', true)
+
 export default function Login(props) {
+
+    const navigate = useNavigate();
     const { setUser } = props;
     console.log(props);
 
-    const handleClick = () => {
+    const handleClick= () => {
         const userPromise = googleAuth();
         userPromise.then((user) => {
-            setUser(user)
+            setUser(user);
+            navigate("/home");
         }).catch((error) => {
             console.log(error);
         })
-    };
+    }
 
     return (
         <div className='login'>

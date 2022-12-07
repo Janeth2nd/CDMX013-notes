@@ -58,14 +58,15 @@ body {
     top: 1230px;
     background: #6E7375;
     mix-blend-mode: lighten;
-    z-index: 2;
+    z-index: 0;
 }
 
 .add-new-note {
     position: absolute;
     left: 480px;
     top: 1251px;
-    z-index: 2;
+    z-index: 4;
+    background: url(../img/add-newNote.png);
 }
 
 .menu {
