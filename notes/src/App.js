@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import React, { useEffect } from 'react';
-import { collection, getDocs } from "firebase/firestore";
+import { collection,  getDocs } from "firebase/firestore";
 import db from "./firebase/config";
+// import { auth } from "../src/componentes/google";
 import "./App.css";
 //import About from "./views/about";
 //import Feed from "./views/Feed";
@@ -13,13 +14,13 @@ import WriteNote from "./views/WriteNote";
 
 function App() {
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getDocs(collection(db, "users"));
-      console.log(data);
-    }
-    getData();
-  }, []);
+//   useEffect(() => {
+//     const getData = async () => {
+//       const data = await getDocs(collection(db, "users"));
+//      console.log(data);
+//  }
+//    getData();
+//  }, []);
 
 
    
@@ -40,6 +41,7 @@ function App() {
   );
 
 }
+//<Route path="/writeNote" element={user ? <WriteNote logOut = {setUserNull} /> : <Login setUser={setUser} />} />
 //<Route path="/Home" element={<Home logOut = {setUserNull} />} />
 // <Route path="/" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
 

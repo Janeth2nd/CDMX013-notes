@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 
-const auth = getAuth();
+export const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 export const googleAuth = () => {
