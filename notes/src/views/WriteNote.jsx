@@ -19,9 +19,13 @@ export default function WriteNote(props, { userEmail }) {
         Title: '',
         Content: ''
     }
+
+    //variables de estado
     const [user, setUser] = useState(initialValue)
-    // "e" es de event.target.value, se pasa como parámetro, "e" captura el valor de cada input.
-    const catchInputs = (e) => {
+    const [list, setList] = useState([])  //va a comenzar con un arreglo vació. (aquí traeremos las notes)
+
+    const catchInputs = (e) => {   // "e" es de event.target.value, se pasa como parámetro, "e" captura el valor de cada input.
+
         const { name, value } = e.target;
         setUser({ ...user, [name]: value })
     }
@@ -36,7 +40,7 @@ export default function WriteNote(props, { userEmail }) {
                 ...user
                 //... -- sprate operator, se hace una copia de lo que tenemos en user. no trae especificamente el objeto, solo copia
             })
-            navigate('/home')
+            //navigate('/home')
         } catch (error) {
             console.log(error);
         }
@@ -45,12 +49,12 @@ export default function WriteNote(props, { userEmail }) {
     }
 
     //   useEffect(() => {
-//     const getData = async () => {
-//       const data = await getDocs(collection(db, "users"));
-//      console.log(data);
-//  }
-//    getData();
-//  }, []);
+    //     const getData = async () => {
+    //       const data = await getDocs(collection(db, "users"));
+    //      console.log(data);
+    //  }
+    //    getData();
+    //  }, []);
 
 
     const getOut = props.logOut
@@ -67,6 +71,28 @@ export default function WriteNote(props, { userEmail }) {
         navigate("/Home");
 
     }
+
+    //función para renderizar la lista de usuarios
+    useEffect(() => {           //va a recibir un callback
+        const getCollection = async () => {
+            try {
+
+                const querySnapshot = await getDocs(collection(db, "Usuarios"))
+                const docs = []                //va a inciar como un array vacío
+                querySnapshot.forEach((doc) => {
+                    docs.push({ ...doc.data(), id: doc.id })         //se une con push el id  del doc, con los campos del documento
+
+                })
+                setList(docs)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getCollection() //aquí se invoca la función
+
+    }, [list])    //la variable de estado es la dependencia que es--- (list) 
+    /*Aquí es donde useEffect  va a montar el componente (lo que está en list) cada vez que escuche un cambio 
+    en la variable de estado*/
 
     return (
         <div className='writeNote'>
@@ -91,6 +117,36 @@ export default function WriteNote(props, { userEmail }) {
                     </div>
                     <button className="saveNote"></button>
                 </form>
+            </div>
+
+            {/* aquí se almacenará la colección de notas de FIREbase */}
+
+            <div className="big-container">
+                <h2 className="notesCollection">Notes Collection</h2>
+
+                <div className="container-card">
+                    <div className="card-body">   {/* boostrap5 */}
+                        {
+                            // de este mapeo tendremos una nueva lista, se va a crear la interfaz donde se colocaran las notesen el contenedor padre.
+                            list.map(list =>(      
+                                <div key={list.id}>      {/* contenedor padre */} 
+                                    <p>Title:{list.title}</p>
+                                    <p>Content:{list.content}</p>
+                                    <button className="btn-danger">
+                                        Delete
+                                    </button>
+                                    <button className="btn-upgrade m-1">
+                                        Upgrade
+                                    </button>
+                                    <hr/>
+                                </div>
+
+
+                            ))
+                        }
+
+                    </div>
+                </div>
             </div>
 
             <footer className="containerFooter"> </footer>
