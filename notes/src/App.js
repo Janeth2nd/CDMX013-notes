@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import React, { useEffect } from 'react';
-import { collection,  getDocs } from "firebase/firestore";
-import db from "./firebase/config";
+//import React, { useEffect } from 'react';
+//import { collection,  getDocs } from "firebase/firestore";
+//import db from "./firebase/config";
 // import { auth } from "../src/componentes/google";
 import "./App.css";
 //import About from "./views/about";
@@ -14,26 +14,16 @@ import WriteNote from "./views/WriteNote";
 
 function App() {
 
-//   useEffect(() => {
-//     const getData = async () => {
-//       const data = await getDocs(collection(db, "users"));
-//      console.log(data);
-//  }
-//    getData();
-//  }, []);
-
-
-   
   const [user, setUser] = useState(null);
-  function setUserNull () {
-  setUser(null)
-}
+  function setUserNull() {
+    setUser(null)
+  }
   return (
-    
+
     <Routes>
       <Route path="/" element={<Login setUser={setUser} />} />
-      <Route path="/home" element={user ? <Home logOut = {setUserNull}/> : <Login setUser={setUser} />} />
-      <Route path="/writeNote" element={user ? <WriteNote logOut = {setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/home" element={user ? <Home logOut={setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/writeNote" element={user ? <WriteNote logOut={setUserNull} /> : <Login setUser={setUser} />} />
       <Route path="/Home" element={<Home setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -47,44 +37,27 @@ function App() {
 
 export default App;
 
+
+
+
 //<Route path="/" element={user ? <Home/> : <Login setUser={setUser}/>}/>
 //<Route path="/" element= {<Feed/>}/>
 //<Route path="/Home" element={<Login />} />
 
-/*import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import React, { useEffect }from 'react';
-import { collection, getDocs } from "firebase/firestore";
-import db from "./firebase/config";
-import Login from "./components/noauth/Login";
-import Home from "./components/home/Home";*/
 
-/*
-function App () {
-  useEffect(() => {
-    const getData = async() => {
-    const data = await getDocs(collection(db,"Users"));
-    console.log(data);
-  }
-  getData();
-  }, []);
 
-  const [user, setUser] = useState(null);
-  return (
-    <Routes>
-      { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
+/*const [user, setUser] = useState(null);
+return (
+  <Routes>
+    { user?<Route path="/" element={<Home />} />: <Route path="/" element={<Login  setUser={setUser}/>} />
 
-      }
+    }
 
-    </Routes>
-  );
+  </Routes>
+);
 }
 
 export default App;*/
-
-
-
-
 
 
 
