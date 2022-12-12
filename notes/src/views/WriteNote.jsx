@@ -13,15 +13,21 @@ const auth = getAuth(app);
 const homeImages = require.context('../img', true)
 
 export default function WriteNote(props, { userEmail }) {
+    
+    const getOut = props.logOut
     const navigate = useNavigate();
 
     const initialValue = {
         Title: '',
         Content: ''
     }
+
+    //variables de estado
     const [user, setUser] = useState(initialValue)
-    // "e" es de event.target.value, se pasa como parámetro, "e" captura el valor de cada input.
-    const catchInputs = (e) => {
+
+
+    const catchInputs = (e) => {   // "e" es de event.target.value, se pasa como parámetro, "e" captura el valor de cada input.
+
         const { name, value } = e.target;
         setUser({ ...user, [name]: value })
     }
@@ -36,24 +42,14 @@ export default function WriteNote(props, { userEmail }) {
                 ...user
                 //... -- sprate operator, se hace una copia de lo que tenemos en user. no trae especificamente el objeto, solo copia
             })
-            navigate('/home')
+            //navigate('/home')
         } catch (error) {
             console.log(error);
         }
-
+        navigate("/GetNotes");
         setUser({ ...initialValue })  //resetea todo lo que tenemos en nuestra variable de estado y lo dejará vacío.
     }
 
-    //   useEffect(() => {
-//     const getData = async () => {
-//       const data = await getDocs(collection(db, "users"));
-//      console.log(data);
-//  }
-//    getData();
-//  }, []);
-
-
-    const getOut = props.logOut
 
     const signOutFromWriteNote = async () => {
         await signOutUser();
@@ -67,6 +63,7 @@ export default function WriteNote(props, { userEmail }) {
         navigate("/Home");
 
     }
+
 
     return (
         <div className='writeNote'>

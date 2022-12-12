@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 //import React, { useEffect } from 'react';
 //import { collection,  getDocs } from "firebase/firestore";
-//import db from "./firebase/config";
-// import { auth } from "../src/componentes/google";
+import db from "./firebase/config";
+//import { auth } from "../src/componentes/google";
 import "./App.css";
 //import About from "./views/about";
 //import Feed from "./views/Feed";
@@ -11,6 +11,8 @@ import NotFound from "./views/NotFound";
 import Login from "./views/Login";
 import Home from "./views/Home";
 import WriteNote from "./views/WriteNote";
+import GetNotes from "./views/GetNotes";
+
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
       <Route path="/" element={<Login setUser={setUser} />} />
       <Route path="/home" element={user ? <Home logOut={setUserNull} /> : <Login setUser={setUser} />} />
       <Route path="/writeNote" element={user ? <WriteNote logOut={setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/GetNotes" element={user ? <GetNotes logOut={setUserNull} /> : <Login setUser={setUser} />} />
       <Route path="/Home" element={<Home setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

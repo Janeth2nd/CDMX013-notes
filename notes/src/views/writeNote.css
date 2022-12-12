@@ -26,6 +26,10 @@ body {
     border-color: transparent;
     background: url(../img/out.png);
 }
+.form-group{
+    background-color: aquamarine;
+    margin-left: 50%;
+}
 
 .note-title {
     position: absolute;
