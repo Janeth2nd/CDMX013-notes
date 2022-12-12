@@ -51,7 +51,9 @@ export default function GetNotes (props, { userEmail }) {
                 console.log(error);
             }
         }
+
         getCollection() //aquí se invoca la función
+       
 
     },[])    //a travez de los corchetes nosotros le daremos la dependencia o no si la necesita el useEffect.
     //la variable de estado es la dependencia que es--- (list) 
