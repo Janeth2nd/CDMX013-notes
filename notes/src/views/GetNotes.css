@@ -3,6 +3,15 @@
     flex-direction: column;
 }
 
+.loading-gif{
+    position: absolute;
+    width: 621px;
+    height: 287px;
+    left: 216px;
+    top: 520px;
+
+}
+
 .labnote-miniLogo {
     position: absolute;
     width: 234px;

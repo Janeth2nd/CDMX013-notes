@@ -34,20 +34,25 @@ export default function WriteNote(props, { userEmail }) {
 
     const saveInputs = async (e) => {
         e.preventDefault(); //para que no se recargue la página
-        console.log(user);
-        //aquí se envía la info a FIrebase
-        try {
-            await addDoc(collection(db, 'Users'), {  //queremos guardar un documento  en mi coleccion Users
-                //dentro de aquí le indico que quiero enviar una copia a mi base de datos
-                ...user
-                //... -- sprate operator, se hace una copia de lo que tenemos en user. no trae especificamente el objeto, solo copia
-            })
-            //navigate('/home')
-        } catch (error) {
-            console.log(error);
+        console.log(user, "heellooo");
+        if(user.Title !== "" && user.Content !== ""){
+            try {
+                await addDoc(collection(db, 'Users'), {  //queremos guardar un documento  en mi coleccion Users
+                    //dentro de aquí le indico que quiero enviar una copia a mi base de datos
+                    ...user
+                    //... -- sprate operator, se hace una copia de lo que tenemos en user. no trae especificamente el objeto, solo copia
+                })
+                //navigate('/home')
+            } catch (error) {
+                console.log(error);
+            }
+            navigate("/getNotes");
+            setUser({ ...initialValue })  //resetea todo lo que tenemos en nuestra variable de estado y lo dejará vacío.
+        } else {
+alert("You can't send an empty note");
         }
-        navigate("/GetNotes");
-        setUser({ ...initialValue })  //resetea todo lo que tenemos en nuestra variable de estado y lo dejará vacío.
+        //aquí se envía la info a FIrebase
+       
     }
 
 
