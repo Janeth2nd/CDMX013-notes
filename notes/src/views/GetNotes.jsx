@@ -67,9 +67,15 @@ export default function GetNotes(props, { userEmail }) {
     en la variable de estado*/
     if(!list){
         return (<img className="loading-gif" src={homeImages(`./loading.gif`)} alt={""}></img>);
+        //return(<h2>Descargando..</h2>)
 
     }
+    
+    //funcion para eliminar la nota del usuario
+    const deleteNote = async(id)=>{
+        await deleteDoc(doc(db, "Users", id))
 
+    }
 
 
     return (
@@ -107,8 +113,8 @@ export default function GetNotes(props, { userEmail }) {
                                 <div className="content-p">{list.Content}</div>
 
 
-                                <img src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete"></img>
-
+                                <img  src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={()=>{deleteNote(list.id)}}></img>
+                                 
                                 <button className="btn-upgrade m-2">
                                     Edit
                                 </button>
