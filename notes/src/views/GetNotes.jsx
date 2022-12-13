@@ -21,12 +21,12 @@ export default function GetNotes(props, { userEmail }) {
     const navigate = useNavigate();
 
     const [list, setList] = useState(null)  //va a comenzar con un arreglo vació. (aquí traeremos las notes)
-
-    const handleSignOutNewNote= async()=> {
+    const [subId, setSubId] = useState('') //almacenará una cadena vacía, por inicio, ya que al hacer lapetición, almacenaremos informacion.
+    const handleSignOutNewNote = async () => {
         await navigate();
         navigate("/WriteNote");
-       console.log("hello user");
-      }
+        console.log("hello user");
+    }
     const signOutFromWriteNote = async () => {
         await signOutUser();
         getOut();
@@ -65,18 +65,27 @@ export default function GetNotes(props, { userEmail }) {
     //la variable de estado es la dependencia que es--- (list) 
     /*Aquí es donde useEffect  va a montar el componente (lo que está en list) cada vez que escuche un cambio 
     en la variable de estado*/
-    if(!list){
+    if (!list) {
         return (<img className="loading-gif" src={homeImages(`./loading.gif`)} alt={""}></img>);
         //return(<h2>Descargando..</h2>)
 
     }
-    
+
     //funcion para eliminar la nota del usuario
-    const deleteNote = async(id)=>{
+    const deleteNote = async (id) => {
         await deleteDoc(doc(db, "Users", id))
 
     }
+    const upgradeNote = async (id) => {
 
+    }
+
+    useEffect(() => {
+        if (subId !== '') { //si nuestra variable de estado (subId) no está vacía. llama a la función upgradeNote, para pasarle un parámetro(subId), se le pasa contenido con ese parametro.
+            upgradeNote(subId)
+        }
+
+    }, [subId])  //aquí se crea la dependencia, este useEffect solo se reenderizará, solo cuando el subId tenga cambios (contenido).
 
     return (
         <div className='writeNote'>
@@ -103,9 +112,9 @@ export default function GetNotes(props, { userEmail }) {
             <div className="big-container">
 
                 <div className="container-card">
-                {list.length === 0 && <Home/>}
+                    {list.length === 0 && <Home />}
                     {
-                       
+
                         // de este mapeo tendremos una nueva lista, se va a crear la interfaz donde se colocaran las notesen el contenedor padre.
                         list.map(list => (
                             <div className="card-body" key={list.id}>      {/* contenedor padre */}
@@ -113,13 +122,13 @@ export default function GetNotes(props, { userEmail }) {
                                 <div className="content-p">{list.Content}</div>
 
 
-                                <img  src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={()=>{deleteNote(list.id)}}></img>
-                                 
-                                <button className="btn-upgrade m-2">
+                                <img src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={() => { deleteNote(list.id) }}></img>
+
+                                <button className="btn-upgrade m-2" onClick={() => setSubId(list.id)}>
                                     Edit
                                 </button>
                                 <br />
-                                
+
 
                             </div>
 
@@ -133,7 +142,7 @@ export default function GetNotes(props, { userEmail }) {
             </div>
 
             <footer className="containerFooter"> </footer>
-            <img src={homeImages('./add-newNote.png')}alt={""}className="add-new-note" onClick={()=>{handleSignOutNewNote()}}></img>
+            <img src={homeImages('./add-newNote.png')} alt={""} className="add-new-note" onClick={() => { handleSignOutNewNote() }}></img>
             <img
                 src={homeImages(`./menu.png`)}
                 alt={""}
