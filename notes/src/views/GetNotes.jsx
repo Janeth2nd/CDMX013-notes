@@ -79,6 +79,9 @@ export default function GetNotes(props, { userEmail }) {
     //funcion para eliminar la nota del usuario
     const deleteNote = async (id) => {
         await deleteDoc(doc(db, "Users", id))
+        const newNoteList = [...list.filter((item) => item.id !== id)];
+    setList(newNoteList);
+
 
     }
 
