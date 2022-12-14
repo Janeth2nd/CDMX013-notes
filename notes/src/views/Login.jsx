@@ -35,7 +35,7 @@ export default function Login(props) {
                 className="google-logo"
             />
 
-            <p>Use your google account</p>
+            <h1>Use your google account</h1>
 
             <button type="button" className="btn-google" onClick={() => { handleClick() }}>Sign in with Google</button>
 

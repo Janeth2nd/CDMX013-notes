@@ -13,7 +13,7 @@ const auth = getAuth(app);
 const homeImages = require.context('../img', true)
 
 export default function WriteNote(props, { userEmail }) {
-    
+
     const getOut = props.logOut
     const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ export default function WriteNote(props, { userEmail }) {
     const saveInputs = async (e) => {
         e.preventDefault(); //para que no se recargue la página
         console.log(user, "heellooo");
-        if(user.Title !== "" && user.Content !== ""){
+        if (user.Title !== "" && user.Content !== "") {
             try {
                 await addDoc(collection(db, 'Users'), {  //queremos guardar un documento  en mi coleccion Users
                     //dentro de aquí le indico que quiero enviar una copia a mi base de datos
@@ -49,10 +49,10 @@ export default function WriteNote(props, { userEmail }) {
             navigate("/getNotes");
             setUser({ ...initialValue })  //resetea todo lo que tenemos en nuestra variable de estado y lo dejará vacío.
         } else {
-alert("You can't send an empty note");
+            alert("You can't send an empty note");
         }
         //aquí se envía la info a FIrebase
-       
+
     }
 
 
@@ -86,14 +86,18 @@ alert("You can't send an empty note");
             <div className="row">
                 <form onSubmit={saveInputs}>   {/* tendra un evento mediante onsubmit, escuchará todos los datos enviados al momento de dar click*/}
                     <div className="form-group">
-                        <input type="text" name="Title" className="note-title" placeholder="Title:"
+                        <input type="text" name="Title" className="note-title" placeholder="Title:" maxlength="40"
                             onChange={catchInputs} value={user.Title} />   {/*onChange es el evento nos permite escuchar a traves de nuestra caja de texto, este evento captura la info que ingrese por input*/}
-                        <input type="text" name="Content" className="note-content" placeholder="Content:" autoComplete="off"
-                            onChange={catchInputs} value={user.Content} />
+                        {/* <input type="text" name="Content" className="note-content" placeholder="Content:" maxlength="80" autoComplete="off"
+                            onChange={catchInputs} value={user.Content} /> */}
+
+              <textarea name="Content" className="note-content" placeholder="Content:" maxlength="80" autoComplete="off" onChange={catchInputs} value={user.Content}></textarea>
+
                     </div>
                     <button className="saveNote"></button>
                 </form>
             </div>
+          
 
             <footer className="containerFooter"> </footer>
 

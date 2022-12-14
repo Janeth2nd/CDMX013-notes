@@ -20,9 +20,9 @@ export default function GetNotes(props, { userEmail }) {
     const getOut = props.logOut
     const navigate = useNavigate();
 
-    const [user, setUser] = useState('')
+
     const [list, setList] = useState(null)  //va a comenzar con un arreglo vació. (aquí traeremos las notes)
-    const [subId, setSubId] = useState('') //almacenará una cadena vacía, por inicio, ya que al hacer lapetición, almacenaremos informacion.
+    
     const handleSignOutNewNote = async () => {
         await navigate();
         navigate("/WriteNote");
@@ -69,33 +69,11 @@ export default function GetNotes(props, { userEmail }) {
 
     // upgrade NOTE
 
-    //hook para editar mi nota... Don’t call Hooks inside loops, conditions, or nested functions. Instead, always use Hooks at the top level of your React function, before any early returns. 
-    useEffect(() => {
-        if (subId !== '') { //si nuestra variable de estado (subId) no está vacía. llama a la función upgradeNote, para pasarle un parámetro(subId), se le pasa contenido con ese parametro.
-            upgradeNote(subId)
-        }
-
-    }, [subId])  //aquí se crea la dependencia, este useEffect solo se reenderizará, solo cuando el subId tenga cambios (contenido).
-
-
-
     //gif loading
     if (!list) {
         return (<img className="loading-gif" src={homeImages(`./loading.gif`)} alt={""}></img>);
         //return(<h2>Descargando..</h2>)
 
-    }
-
-    const upgradeNote = async (id) => {
-        try {                             //petición a firebase
-            const docRef = doc(db, "Users", id)  //recibe 3 parametros
-            const docSnap = await getDoc(docRef)  //almacena la petición de lo que tenemos en docRef, utilizando la funcionalidad de getDoc (solo un documento)
-            setUser(docSnap.data())        //permite alterar la variable de estado. // aquí se guardará lo que esté en docSnap.. toda la info, campos, valores.
-
-        } catch (error) {
-            console.log(error);
-        }
-        console.log(upgradeNote);
     }
 
     //funcion para eliminar la nota del usuario
@@ -128,7 +106,7 @@ export default function GetNotes(props, { userEmail }) {
 
             <div className="big-container">
 
-                <div className="container-card">
+                {/* <div className="container-card"> */}
                     {list.length === 0 && <Home />}
                     {
 
@@ -138,10 +116,9 @@ export default function GetNotes(props, { userEmail }) {
                                 <div className="title-p">{list.Title}</div>
                                 <div className="content-p">{list.Content}</div>
 
-
-                                <img src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={() => { deleteNote(list.id) }}></img>
-
-                                <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade m-2" onClick={() => setSubId(list.id)}></img>
+                                <img src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={() => { deleteNote(list.id) }}></img> 
+                                <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade" type="button"></img>
+                                {/* <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade m-2" onClick={() => setSubId(list.id)}></img> */}
                                 
 
                             </div>
@@ -152,7 +129,7 @@ export default function GetNotes(props, { userEmail }) {
                     }
 
 
-                </div>
+                {/* </div> */}
             </div>
 
             <footer className="containerFooter"> </footer>

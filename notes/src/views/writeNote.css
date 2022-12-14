@@ -27,8 +27,12 @@ body {
     background: url(../img/out.png);
 }
 .form-group{
-    background-color: aquamarine;
-    margin-left: 50%;
+    margin-left: 40%;
+    z-index: 2;
+}
+.writeNote{
+    margin-top: 50%;
+    
 }
 
 .note-title {
@@ -44,11 +48,12 @@ body {
     font-weight: 800;
     font-size: 55px;
     line-height: 69px;
-    z-index: 2;
+    z-index: 4;
     color: rgba(0, 0, 0, 0.78);
     border-color: transparent;
+    
 }
-.note-content{
+/* .note-content{
     position: absolute;
     width: 840px;
     height: 550px;
@@ -66,7 +71,26 @@ body {
     border-color: transparent;
     z-index:-2;
     
- 
+} */
+
+textarea{
+    position: absolute;
+    width: 841px;
+    height: 550px;
+    left: 80px;
+    top: 375px;
+    background: rgba(217, 217, 217, 0.66);
+    font-family: 'Sora';
+    padding: 1%;
+    font-style: normal;
+    text-align:left;
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 69px;
+    color: rgba(0, 0, 0, 0.78);
+    border-color: transparent;
+    z-index:1;
+
 }
 
 .saveNote {
@@ -75,10 +99,13 @@ body {
     height: 70px;
     left: 482px;
     top: 850px;
-    z-index: 2;
+    z-index: 4;
     background-image: url(../img/saveNote.png);
     border-style: none;
     background-color: transparent;
+}
+.saveNote:active{
+    transform: translateY(5px);
 }
 
 .containerFooter {
@@ -109,6 +136,9 @@ body {
     border-style: none;
     background-image: url(../img/go-back.png);
     background-color: transparent;
+}
+.go-backto-home:active{
+    transform: translateY(4px);
 }
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {}
