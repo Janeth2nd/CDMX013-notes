@@ -53,25 +53,6 @@ body {
     border-color: transparent;
     
 }
-/* .note-content{
-    position: absolute;
-    width: 840px;
-    height: 550px;
-    left: 80px;
-    top: 380px;
-    background: rgba(217, 217, 217, 0.66);
-    font-family: 'Sora';
-    padding: 1%;
-    font-style: normal;
-    text-align:left;
-    font-weight: 800;
-    font-size: 55px;
-    line-height: 69px;
-    color: rgba(0, 0, 0, 0.78);
-    border-color: transparent;
-    z-index:-2;
-    
-} */
 
 textarea{
     position: absolute;

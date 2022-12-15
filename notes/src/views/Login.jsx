@@ -8,7 +8,6 @@ export default function Login(props) {
 
     const navigate = useNavigate();
     const { setUser } = props;
-    console.log(props);
 
     const handleClick= () => {
         const userPromise = googleAuth();
@@ -21,6 +20,7 @@ export default function Login(props) {
     }
 
     return (
+
         <div className='login'>
 
             <img
@@ -35,14 +35,12 @@ export default function Login(props) {
                 className="google-logo"
             />
 
-            <h1>Use your google account</h1>
+            <h1> Use your google account </h1>
 
             <button type="button" className="btn-google" onClick={() => { handleClick() }}>Sign in with Google</button>
 
             <div className="developed">Developed By</div>
             <footer className="footer">2022 Janeth Segundo | Laboratoria</footer>
-
-
 
             <img
                 src={loginImages(`./c.png`)}
