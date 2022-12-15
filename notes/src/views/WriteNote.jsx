@@ -86,12 +86,12 @@ export default function WriteNote(props, { userEmail }) {
             <div className="row">
                 <form onSubmit={saveInputs}>   {/* tendra un evento mediante onsubmit, escuchará todos los datos enviados al momento de dar click*/}
                     <div className="form-group">
-                        <input type="text" name="Title" className="note-title" placeholder="Title:" maxlength="40"
+                        <input type="text" name="Title" className="note-title" placeholder="Title:" maxLength="40"
                             onChange={catchInputs} value={user.Title} />   {/*onChange es el evento nos permite escuchar a traves de nuestra caja de texto, este evento captura la info que ingrese por input*/}
                         {/* <input type="text" name="Content" className="note-content" placeholder="Content:" maxlength="80" autoComplete="off"
                             onChange={catchInputs} value={user.Content} /> */}
 
-              <textarea name="Content" className="note-content" placeholder="Content:" maxlength="80" autoComplete="off" onChange={catchInputs} value={user.Content}></textarea>
+              <textarea name="Content" className="note-content" placeholder="Content:" maxLength="80" autoComplete="off" onChange={catchInputs} value={user.Content}></textarea>
 
                     </div>
                     <button className="saveNote"></button>
