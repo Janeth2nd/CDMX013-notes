@@ -1,26 +1,24 @@
 import { signOutUser } from '../componentes/google';
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './home.css'
 
 const homeImages = require.context('../img', true)
-export default function Home(props) { 
+
+export default function Home(logOut) {
     const navigate = useNavigate();
-    const getOut=props.logOut
 
-   const handleSignOutNewNote= async()=> {
-    await navigate();
-    navigate("/WriteNote");
-   console.log("hello user");
-  }
+    const handleSignOutNewNote = async () => {
+        await navigate();
+        navigate("/writeNote");
+    }
 
-  const handleSignOut= async()=> {
-    await signOutUser();
-    getOut();
-    navigate("/");
-   console.log("go away!");
-  }
- 
+    const handleSignOut = async () => {
+        await signOutUser(logOut);
+        navigate("/");
+    }
+
     return (
+
         <div className='home'>
 
             <img
@@ -51,13 +49,13 @@ export default function Home(props) {
 
             <footer className="containerFooter"> </footer>
 
-            <img src={homeImages('./add-newNote.png')}alt={""}className="add-new-note" onClick={()=>{handleSignOutNewNote()}}></img> 
+            <img src={homeImages('./add-newNote.png')} alt={""} className="add-new-note" onClick={() => { handleSignOutNewNote() }}></img>
+
             <img
                 src={homeImages(`./menu.png`)}
                 alt={""}
                 className="menu"
             />
-        
 
         </div>
     )
