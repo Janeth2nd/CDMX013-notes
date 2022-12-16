@@ -6,10 +6,22 @@ import Login from "./views/Login";
 import WriteNote from "./views/WriteNote";
 import GetNotes from "./views/GetNotes";
 import Home from "./views/Home";
+import EditNote1 from "./views/EditNote1";
 
 function App() {
 
+  const initialValue = {
+     Title: '',
+    Content: ''
+ }
+
   const [user, setUser] = useState(null);
+  const [list, setList] = useState([])
+  const [userWriteNote, setUserWriteNote] = useState(initialValue)
+
+//list={list} setList={setList}
+//userWriteNote={userWriteNote} setUserWriteNote={setUserWriteNote}
+
   function setUserNull() {
     setUser(null)
   }
@@ -17,10 +29,11 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Login setUser={setUser} />} />
-      <Route path="/home" element={user ? <GetNotes logOut={setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/home" element={user ? <GetNotes logOut={setUserNull} list={list} setList={setList} /> : <Login setUser={setUser} />} />
       <Route path="/writeNote" element={user ? <WriteNote logOut={setUserNull} /> : <Login setUser={setUser} />} />
-      <Route path="/getNotes" element={user ? <GetNotes logOut={setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/getNotes" element={user ? <GetNotes logOut={setUserNull} list={list} setList={setList} /> : <Login setUser={setUser} />} />
       <Route path="/home" element={user ? <Home logOut={setUserNull} /> : <Login setUser={setUser} />} />
+      <Route path="/editNote1" element={user ? <EditNote1  setUserWriteNote={setUserWriteNote} list={list}  /> : <Login setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 

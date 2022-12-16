@@ -11,11 +11,13 @@ import './GetNotes.css';
 const db = getFirestore(app);
 const homeImages = require.context('../img', true)
 
-export default function GetNotes(props, { userEmail }) {
+export default function GetNotes(props) {
     const getOut = props.logOut
+    const list = props.list
+    const setList = props.setList
     const navigate = useNavigate();
 
-    const [list, setList] = useState(null)
+    //const [list, setList] = useState([])
 
     const handleSignOutNewNote = async () => {
         await navigate();
@@ -30,8 +32,11 @@ export default function GetNotes(props, { userEmail }) {
     }
 
     const handleBacktoWriteNote = async () => {
-        await navigate();
-        navigate("/WriteNote");
+        navigate("/writeNote");
+    }
+
+    const editBtn = async () => {
+        navigate("/editNote1");
 
     }
 
@@ -68,8 +73,6 @@ export default function GetNotes(props, { userEmail }) {
     return (
         <div className='writeNote'>
 
-            <p><strong>{userEmail}</strong></p>
-
             <img
                 src={homeImages(`./userIcon.png`)}
                 alt={""}
@@ -94,7 +97,7 @@ export default function GetNotes(props, { userEmail }) {
                         <div className="content-p">{list.Content}</div>
 
                         <img src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={() => { deleteNote(list.id) }}></img>
-                        <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade" type="button"></img>
+                        <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade" type="button" onClick={() => { editBtn() }}></img>
 
                     </div>
                 ))
