@@ -7,9 +7,10 @@ import './editNote1.css';
 const db = getFirestore(app);
 const homeImages = require.context('../img', true)
 
-export default function EditNote1({ setUserWriteNote, list }) { //userWriteNote
+export default function EditNote1({ userWriteNote, setUserWriteNote, list, catchInput }) { //userWriteNote
 
     const [subId, setSubId] = useState("")
+    
 
     const getDocToEdit = async (id) => {  //petición al servidor
         try {
@@ -38,16 +39,16 @@ export default function EditNote1({ setUserWriteNote, list }) { //userWriteNote
 
         <div className='writeNote'>
             <div className="big-container">
-                    {list.map(item => (
-                        <div className="card-body" key={item.id}>
-                            <div className="title-p">{item.Title}</div>
-                            <div className="content-p">{item.Content}</div>
+                    
+                        <div className="card-body" >
+                            <input className="title-p" value ={setUserWriteNote.Title} onChange={catchInput}/>
+                            <input className="content-p" value={setUserWriteNote.Content} onChange={catchInput}/>
 
                             <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade2" type="button" onClick={() => setSubId(list.id)}></img>
 
                         </div>
-                    ))
-                    }
+                    
+                    
 
             </div>
 
