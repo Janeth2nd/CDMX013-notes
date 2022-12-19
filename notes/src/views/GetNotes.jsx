@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signOutUser } from '../componentes/google';
 import React, { useEffect } from 'react';
@@ -35,10 +35,6 @@ export default function GetNotes(props) {
         navigate("/writeNote");
     }
 
-    const editBtn = async () => {
-        navigate("/editNote1");
-
-    }
 
     useEffect(() => {
         const getCollection = async () => {
@@ -58,7 +54,20 @@ export default function GetNotes(props) {
 
         getCollection()
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+
+    const editBtn = async () => {
+        navigate({
+            pathname: "/editNote1",
+            search: createSearchParams({
+                id: doc.id
+            }).toString()
+        });
+        navigate("/editNote1?");
+    };
+
 
     if (!list) {
         return (<img className="loading-gif" src={homeImages(`./loading.gif`)} alt={""}></img>);

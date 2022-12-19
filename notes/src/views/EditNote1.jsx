@@ -23,7 +23,12 @@ export default function EditNote1({ userWriteNote, setUserWriteNote, list, catch
 
         }
     }
+    const catchInputs = (e) => {
 
+        const { name, value } = e.target;
+        setUserWriteNote({ ...userWriteNote, [name]: value })
+        console.log(catchInputs);
+        }
     //con useEffect(tendremos una dependencia) hacemos la petición de un solo documento para saber si se renderizará o no.
     useEffect(() => {
 
@@ -45,7 +50,7 @@ export default function EditNote1({ userWriteNote, setUserWriteNote, list, catch
                             <input className="content-p" value={setUserWriteNote.Content} onChange={catchInput}/>
 
                             <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade2" type="button" onClick={() => setSubId(list.id)}></img>
-
+<button onClick={() => catchInput(list.id)}></button>
                         </div>
                     
                     

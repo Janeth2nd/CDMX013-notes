@@ -15,12 +15,6 @@ function App() {
     Content: ''
  }
 
- const catchInput = (e) => {
-
-  const { name, value } = e.target;
-  setUserWriteNote({ ...userWriteNote, [name]: value })
-}
-
   const [user, setUser] = useState(null);
   const [list, setList] = useState([])
   const [userWriteNote, setUserWriteNote] = useState(initialValue)

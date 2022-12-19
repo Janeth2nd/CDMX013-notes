@@ -11,22 +11,22 @@ const homeImages = require.context('../img', true)
 export default function WriteNote(props) {
 
     const getOut = props.logOut
-    const initialValue=props.initialValue
-    const catchInputs=props.catchInput
+   // const initialValue=props.initialValue
+    //const catchInputs=props.catchInput
     const navigate = useNavigate();
 
-    // const initialValue = {
-    //     Title: '',
-    //     Content: ''
-    // }
+    const initialValue = {
+        Title: '',
+         Content: ''
+     }
 
     const [userWriteNote, setUserWriteNote] = useState(initialValue)
 
-    // const catchInputs = (e) => {
+    const catchInputs = (e) => {
 
-    //     const { name, value } = e.target;
-    //     setUserWriteNote({ ...userWriteNote, [name]: value })
-    // }
+    const { name, value } = e.target;
+    setUserWriteNote({ ...userWriteNote, [name]: value })
+    }
 
     const saveInputs = async (e) => {
         e.preventDefault();
