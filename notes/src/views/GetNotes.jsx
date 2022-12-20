@@ -58,14 +58,9 @@ export default function GetNotes(props) {
     }, [])
 
 
-    const editBtn = async () => {
-        navigate({
-            pathname: "/editNote1",
-            search: createSearchParams({
-                id: doc.id
-            }).toString()
-        });
-        navigate("/editNote1?");
+    const editBtn = async (id) => {
+        
+        navigate("/editNote1/" + id);
     };
 
 
@@ -106,7 +101,7 @@ export default function GetNotes(props) {
                         <div className="content-p">{list.Content}</div>
 
                         <img src={homeImages('./deleteBtn1.png')} alt={""} className="btn-delete" onClick={() => { deleteNote(list.id) }}></img>
-                        <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade" type="button" onClick={() => { editBtn() }}></img>
+                        <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade" type="button" onClick={() => { editBtn(list.id) }}></img>
 
                     </div>
                 ))

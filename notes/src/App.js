@@ -23,11 +23,11 @@ function App() {
 //list={list} setList={setList}
 //userWriteNote={userWriteNote} setUserWriteNote={setUserWriteNote}
 
- const catchInputs = (e) => {
+//  const catchInputs = (e) => {
 
-        const { name, value } = e.target;
-        setUserWriteNote({ ...userWriteNote, [name]: value })
-    }
+//         const { name, value } = e.target;
+//         setUserWriteNote({ ...userWriteNote, [name]: value })
+//     }
 
   function setUserNull() {
     setUser(null)
@@ -37,10 +37,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Login setUser={setUser} />} />
       <Route path="/home" element={user ? <GetNotes logOut={setUserNull} list={list} setList={setList} /> : <Login setUser={setUser} />} />
-      <Route path="/writeNote" element={user ? <WriteNote logOut={setUserNull} catchInput={catchInputs} /> : <Login setUser={setUser} initialValue={initialValue} />} />
+      <Route path="/writeNote" element={user ? <WriteNote logOut={setUserNull}  /> : <Login setUser={setUser} initialValue={initialValue} />} />
       <Route path="/getNotes" element={user ? <GetNotes logOut={setUserNull} list={list} setList={setList} /> : <Login setUser={setUser} />} />
       <Route path="/home" element={user ? <Home logOut={setUserNull} /> : <Login setUser={setUser} />} />
-      <Route path="/editNote1" element={user ? <EditNote1 userWriteNote={userWriteNote} setUserWriteNote={setUserWriteNote} list={list}  catchInput={catchInputs} /> : <Login setUser={setUser} />} />
+      <Route path="/editNote1/:id" element={user ? <EditNote1  list={list}  /> : <Login setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 

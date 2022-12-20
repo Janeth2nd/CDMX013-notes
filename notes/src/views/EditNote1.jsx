@@ -2,58 +2,57 @@ import { getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { getFirestore, doc } from "firebase/firestore";
 import { app } from "../firebase/config";
+import { useParams } from "react-router-dom";
 import './editNote1.css';
 
 const db = getFirestore(app);
 const homeImages = require.context('../img', true)
 
-export default function EditNote1({ userWriteNote, setUserWriteNote, list, catchInput }) { //userWriteNote
+export default function EditNote1({ list }) { //userWriteNote
 
-    const [subId, setSubId] = useState("")
-    
+    const [note, setNote] = useState({
+        Title: "",
+        Content: "",
+    });  //anteriormente era solo un objeto vacío useState({})
 
-    const getDocToEdit = async (id) => {  //petición al servidor
-        try {
-            const docRef = doc(db, "Users", id)
-            const docSnap = await getDoc(docRef)
-            setUserWriteNote(docSnap.data())    //setUser permite alterar el valor de las variables de estado, osea de "user"
+   //declaración del estado
+    let { id } = useParams();
 
-        } catch (error) {
-            console.log(error)
-
-        }
-    }
-    const catchInputs = (e) => {
+    const catchInput = (e) => {
 
         const { name, value } = e.target;
-        setUserWriteNote({ ...userWriteNote, [name]: value })
-        console.log(catchInputs);
-        }
+        setNote({ ...note, [name]: value })
+    }
     //con useEffect(tendremos una dependencia) hacemos la petición de un solo documento para saber si se renderizará o no.
     useEffect(() => {
+        const getDocToEdit = () => {  //petición al servidor
 
-        if (subId !== "") {   //si nuestra variable de estado no está vacía.
-            getDocToEdit(subId)           // si no está vació, se llama a la función getDocToEdit, para pasarle el parametro subId.(subId ya recibió contenido).
+            const docRef = doc(db, "Users", id)
+            return getDoc(docRef)
         }
+        getDocToEdit().then(result => {
+            setNote(result.data())
+        })
+
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])  //aquí se va a renderizar, siempre y cuando subId tenga contenio, cambios. 
-
+    }, [id])  //aquí se va a renderizar, siempre y cuando subId tenga contenio, cambios. 
+    console.log(note)
 
     return (
 
         <div className='writeNote'>
             <div className="big-container">
-                    
-                        <div className="card-body" >
-                            <input className="title-p" value ={setUserWriteNote.Title} onChange={catchInput}/>
-                            <input className="content-p" value={setUserWriteNote.Content} onChange={catchInput}/>
 
-                            <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade2" type="button" onClick={() => setSubId(list.id)}></img>
-<button onClick={() => catchInput(list.id)}></button>
-                        </div>
-                    
-                    
+                <div className="card-body" >
+                    <input className="title-p" name="Title" value={note.Title} onChange={catchInput} />
+                    <input className="content-p" name="Content" value={note.Content} onChange={catchInput} />
+
+                    <img src={homeImages('./pencil.png')} alt={""} className="btn-upgrade2" type="button" onClick={() => setNote(list.id)}></img>
+                    <button></button>
+                </div>
+
+
 
             </div>
 
