@@ -40,7 +40,7 @@ function App() {
       <Route path="/writeNote" element={user ? <WriteNote logOut={setUserNull}  /> : <Login setUser={setUser} initialValue={initialValue} />} />
       <Route path="/getNotes" element={user ? <GetNotes logOut={setUserNull} list={list} setList={setList} /> : <Login setUser={setUser} />} />
       <Route path="/home" element={user ? <Home logOut={setUserNull} /> : <Login setUser={setUser} />} />
-      <Route path="/editNote1/:id" element={user ? <EditNote1  list={list}  /> : <Login setUser={setUser} />} />
+      <Route path="/editNote1/:id" element={user ? <EditNote1 logOut={setUserNull} list={list}  /> : <Login setUser={setUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
 
