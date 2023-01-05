@@ -8,9 +8,11 @@ import './writeNote.css';
 const db = getFirestore(app);
 const homeImages = require.context('../img', true)
 
-export default function WriteNote(props, { userEmail }) {
+export default function WriteNote(props) {
 
     const getOut = props.logOut
+    // const initialValue=props.initialValue
+    //const catchInputs=props.catchInput
     const navigate = useNavigate();
 
     const initialValue = {
@@ -18,28 +20,28 @@ export default function WriteNote(props, { userEmail }) {
         Content: ''
     }
 
-    const [user, setUser] = useState(initialValue)
+    const [userWriteNote, setUserWriteNote] = useState(initialValue)
 
     const catchInputs = (e) => {
 
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value })
+        setUserWriteNote({ ...userWriteNote, [name]: value })
     }
 
     const saveInputs = async (e) => {
         e.preventDefault();
-        console.log(user, "heellooo");
-        if (user.Title !== "" && user.Content !== "") {
+        console.log(userWriteNote, "heellooo");
+        if (userWriteNote.Title !== "" && userWriteNote.Content !== "") {
             try {
                 await addDoc(collection(db, 'Users'), {
-                    ...user
+                    ...userWriteNote
                 })
 
             } catch (error) {
                 console.log(error);
             }
             navigate("/getNotes");
-            setUser({ ...initialValue })
+            setUserWriteNote({ ...initialValue })
         } else {
             alert("You can't send an empty note");
         }
@@ -61,8 +63,6 @@ export default function WriteNote(props, { userEmail }) {
     return (
         <div className='writeNote'>
 
-            <p><strong>{userEmail}</strong></p>
-
             <img
                 src={homeImages(`./title-mini.png`)}
                 alt={""}
@@ -76,8 +76,8 @@ export default function WriteNote(props, { userEmail }) {
                     <div className="form-group">
 
                         <input type="text" name="Title" className="note-title" placeholder="Title:" maxLength="40"
-                            onChange={catchInputs} value={user.Title} />
-                        <textarea name="Content" className="note-content" placeholder="Content:" maxLength="80" autoComplete="off" onChange={catchInputs} value={user.Content}></textarea>
+                            onChange={catchInputs} value={userWriteNote.Title} />
+                        <textarea name="Content" className="note-content" placeholder="Content:" maxLength="80" autoComplete="off" onChange={catchInputs} value={userWriteNote.Content}></textarea>
 
                     </div>
                     <button className="saveNote"></button>
